@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>recursos/377-3776890_pacman-sprites-pixel-art-14x14-pac-man.png</file>
+        <file>recursos/Arcade - Pac-Man - General Sprites.png</file>
+        <file>recursos/MapaInicio.png</file>
+        <file>recursos/MapaVacio.png</file>
+        <file>recursos/Sprites.png</file>
+    </qresource>
+</RCC>
