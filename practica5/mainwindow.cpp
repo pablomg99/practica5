@@ -13,19 +13,10 @@ MainWindow::MainWindow(QWidget *parent)
     fondo = new escenario();
     scene->addItem(fondo);
 
-    DataBase=archivo("Barreras.txt");
+    QList<QList<int>>::iterator it;
 
-    vector<vector<string>>::iterator it;
-    int x=0, y=0, w=0, h=0;
-    string aux;
-    for(it=DataBase.vector_barreras.begin(); it!=DataBase.vector_barreras.end(); it++){
-        aux = *it;
-        this->x = DataBase.stringToInt(aux[0]);
-        this->y = DataBase.stringToInt(aux[1]);
-        this->w = DataBase.stringToInt(aux[2]);
-        this->h = DataBase.stringToInt(aux[3]);
-
-        Paredes.push_back(new pared(x,y,w,h));
+    for(it=Cdatos.datos.begin(); it != Cdatos.datos.end(); it++){
+        Paredes.push_back(new pared((*it)[0], (*it)[1], (*it)[2], (*it)[3]));
         scene->addItem(Paredes.back());
     }
 }

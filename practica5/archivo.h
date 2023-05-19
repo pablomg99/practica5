@@ -1,26 +1,18 @@
 #ifndef ARCHIVO_H
 #define ARCHIVO_H
-#include <QGraphicsItem>
-#include <QPainter>
-#include <fstream>
-#include <vector>
-using namespace std;
+#include <QList>
 
-class archivo
+class Archivo
 {
-    int txtLeng;
-    char* all_db;
-    bool errorArchivo=false;
-    string dbName, strDb;
+    QString datosCrudos;
+
 public:
-    archivo();
-    archivo(string _txtName);
-    vector<string> splitString(string info, char a);
-    void cargar_archivo_barreras();
-    void setVectorBarreras();
+    QList<QList<int>> datos;
+    Archivo();
+    int str2int(QString data);
     int pot(int base, int exponente);
-    int stringToInt(string str);
-    vector<vector<string>> vector_barreras;
+    void getDatos();
+    void setList();
 };
 
 #endif // ARCHIVO_H

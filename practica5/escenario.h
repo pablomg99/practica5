@@ -3,7 +3,6 @@
 #include <QGraphicsItem>
 #include <QPainter>
 #include <QPixmap>
-using namespace std;
 
 
 class escenario: public QGraphicsItem
