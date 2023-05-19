@@ -13,23 +13,20 @@ MainWindow::MainWindow(QWidget *parent)
     fondo = new escenario();
     scene->addItem(fondo);
 
-    vector<vector<string>>::iterator it;
-    int _x, _y, _ancho, _alto;
-    for(it=barreras.vector_barreras.begin(); it!=barreras.vector_barreras.end(); it++)
-    {
-        _x=0;
-        _y=0;
-        _ancho=0;
-        _alto=0;
+    DataBase=archivo("Barreras.txt");
 
-        for(int i = 0; i<4; i++)
-        {
-            if(i==0) _x=stringToInt((*it)[i]);
-            else if(i==1) _y=stringToInt((*it)[i]);
-            else if(i==2) _ancho=stringToInt((*it)[i]);
-            else if(i==3) _alto=stringToInt((*it)[i]);
-        }
-        muros.push_back(new barreras());
+    vector<vector<string>>::iterator it;
+    int x=0, y=0, w=0, h=0;
+    string aux;
+    for(it=DataBase.vector_barreras.begin(); it!=DataBase.vector_barreras.end(); it++){
+        aux = *it;
+        this->x = DataBase.stringToInt(aux[0]);
+        this->y = DataBase.stringToInt(aux[1]);
+        this->w = DataBase.stringToInt(aux[2]);
+        this->h = DataBase.stringToInt(aux[3]);
+
+        Paredes.push_back(new pared(x,y,w,h));
+        scene->addItem(Paredes.back());
     }
 }
 

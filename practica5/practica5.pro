@@ -9,17 +9,19 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    barrera.cpp \
+    archivo.cpp \
     escenario.cpp \
     main.cpp \
     mainwindow.cpp \
-    pacman.cpp
+    pacman.cpp \
+    pared.cpp
 
 HEADERS += \
-    barrera.h \
+    archivo.h \
     escenario.h \
     mainwindow.h \
-    pacman.h
+    pacman.h \
+    pared.h
 
 FORMS += \
     mainwindow.ui

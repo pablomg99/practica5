@@ -5,8 +5,12 @@
 #include <QKeyEvent>
 #include <QList>
 #include <QGraphicsItem>
+#include <fstream>
+#include <vector>
 #include "escenario.h"
-#include "barrera.h"
+#include "pared.h"
+#include "archivo.h"
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +29,7 @@ private:
     Ui::MainWindow *ui;
     QGraphicsScene *scene;
     escenario *fondo;
-    QList<barreras*> muros;
+    archivo DataBase;
+    QList<pared*> Paredes;
 };
 #endif // MAINWINDOW_H
