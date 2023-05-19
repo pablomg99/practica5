@@ -5,5 +5,6 @@
         <file>recursos/MapaInicio.png</file>
         <file>recursos/MapaVacio.png</file>
         <file>recursos/Sprites.png</file>
+        <file>recursos/PacManSprites.png</file>
     </qresource>
 </RCC>

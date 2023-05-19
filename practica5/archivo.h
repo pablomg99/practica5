@@ -7,8 +7,9 @@ class Archivo
     QString datosCrudos;
 
 public:
-    QList<QList<int>> datos;
     Archivo();
+    QList<QList<int>> datos;
+    bool fallaLectura;
     int str2int(QString data);
     int pot(int base, int exponente);
     void getDatos();

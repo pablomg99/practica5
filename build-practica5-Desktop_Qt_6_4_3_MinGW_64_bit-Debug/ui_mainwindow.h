@@ -39,7 +39,7 @@ public:
         graphicsView->setGeometry(QRect(1, 1, 241, 271));
         lblError = new QLabel(centralwidget);
         lblError->setObjectName("lblError");
-        lblError->setGeometry(QRect(20, 130, 191, 16));
+        lblError->setGeometry(QRect(10, 280, 191, 16));
         MainWindow->setCentralWidget(centralwidget);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName("statusbar");

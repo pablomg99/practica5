@@ -4,10 +4,15 @@
 #include <QGraphicsScene>
 #include <QKeyEvent>
 #include <QList>
+#include <QWidget>
+#include <QRectF>
+#include <QDebug>
 #include <QGraphicsItem>
+#include <QPainter>
 #include "escenario.h"
 #include "pared.h"
 #include "archivo.h"
+#include "pacman.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -28,5 +33,6 @@ private:
     escenario *fondo;
     Archivo Cdatos;
     QList<pared*> Paredes;
+    pacman *personaje;
 };
 #endif // MAINWINDOW_H

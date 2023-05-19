@@ -5,10 +5,11 @@ using namespace std;
 Archivo::Archivo()
 {
     this->datosCrudos="";
+    this->fallaLectura=false;
     setList();
 }
 
-int Archivo::str2int(QString data)
+int Archivo::str2int(QString data) //Convierte un número en formato string al mismo número en formato int
 {
     int size=data.size(), resultado=0, potencia;
     for(int i=0; i<size; i++){
@@ -19,7 +20,7 @@ int Archivo::str2int(QString data)
     return resultado;
 }
 
-int Archivo::pot(int base, int exponente)
+int Archivo::pot(int base, int exponente) //Potenciacion
 {
     int resultado = 1;
         for(int i = 0; i < exponente; i++) {
@@ -28,16 +29,16 @@ int Archivo::pot(int base, int exponente)
     return resultado;
 }
 
-void Archivo::getDatos()
+void Archivo::getDatos() //Carga los datos del archivo de barreras en un arreglo de caracteres
 {
     ifstream myFile;
     int leng;
     char* texto;
 
-    if(myFile.fail()){
-    }
-    else{
-        myFile.open("Barreras.txt", ios_base::in | ios_base::ate);
+    myFile.open("Barreras.txt", ios_base::in | ios_base::ate);
+
+    if(myFile.is_open()){
+        fallaLectura=true;
         leng=myFile.tellg();
         texto=new char[leng];
 
@@ -50,7 +51,7 @@ void Archivo::getDatos()
     }
 }
 
-void Archivo::setList()
+void Archivo::setList() //Convierte los datos almacenados en una cadena de caracteres en una lista de datos individuales
 {
     QList<QString> auxList = datosCrudos.split('\n', Qt::SkipEmptyParts);
     QList<QString> auxStrList;
