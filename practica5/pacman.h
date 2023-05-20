@@ -8,7 +8,6 @@
 
 class pacman: public QObject, public QGraphicsItem
 {
-    //int posx, posy, dimension, velocidad;
 
     Q_OBJECT
 public:
@@ -16,19 +15,13 @@ public:
 
     QTimer *timer;
     QPixmap *pixmap;
-
     float filas, columnas, ancho, alto, pixCol, pixFila;
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
-    /*pacman();
-    pacman(int x, int y);
-    QRectF boundingRect() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget = nullptr);
     void moveUp();
     void moveDown();
     void moveLeft();
-    void moveRight();*/
-
+    void moveRight();
 signals:
 
 public slots:

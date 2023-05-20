@@ -1,6 +1,9 @@
 #ifndef ARCHIVO_H
 #define ARCHIVO_H
 #include <QList>
+#include <fstream>
+
+using namespace std;
 
 class Archivo
 {

@@ -3,28 +3,31 @@
 pacman::pacman(QObject *parent) : QObject(parent)
 {
     timer = new QTimer();
-    filas = 1;
+    filas = 0;
     columnas = 0;
     pixCol=229;
     pixFila=0;
     pixmap=new QPixmap(":/recursos/PacManSprites.png");
-    ancho = 15;
-    alto = 15;
-    timer->start(500);
+    ancho = 16;
+    alto = 16;
+    timer->start(70);
 
     connect(timer, &QTimer::timeout, this, &pacman::Actualizacion);
 }
 
 void pacman::Actualizacion()
 {
-    pixCol=pixCol+((columnas*ancho)+columnas);
-    pixFila=pixFila+((filas*alto)+filas);
+    pixFila=0;
+    pixCol=229;
+    pixFila=pixFila+(alto*filas);
+    pixCol=pixCol+(ancho*columnas);
+
     columnas+=1;
-    if(columnas>=3){
+    if(columnas>3){
         columnas=0;
         pixCol=229;
     }
-    this->update(-ancho/2, -alto/2 ,ancho,alto); //revisar
+    this->update(-ancho/2, -alto/2 ,ancho,alto);
 }
 
 QRectF pacman::boundingRect() const
@@ -34,40 +37,25 @@ QRectF pacman::boundingRect() const
 
 void pacman::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
-    painter->drawPixmap(0,0,*pixmap,pixCol,pixFila,ancho,alto);
-}
-
-/*pacman::pacman(int x, int y)
-{
-
-}
-
-QRectF pacman::boundingRect() const
-{
-
-}
-
-void pacman::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
-{
-
+    painter->drawPixmap(-ancho/2, -alto/2,*pixmap,pixCol,pixFila,ancho,alto);
 }
 
 void pacman::moveUp()
 {
-
+    filas=2;
 }
 
 void pacman::moveDown()
 {
-
+    filas=3;
 }
 
 void pacman::moveLeft()
 {
-
+    filas=1;
 }
 
 void pacman::moveRight()
 {
-
-}*/
+    filas=0;
+}

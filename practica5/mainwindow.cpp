@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->graphicsView->setScene(scene);
     scene->setSceneRect(0, 0, 226, 250);
     fondo = new escenario();
-    scene->addItem(fondo);
 
     if(Cdatos.fallaLectura==true)
     {
@@ -27,12 +26,18 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
 
+    scene->addItem(fondo);
+
+
     personaje=new pacman();
     scene->addItem(personaje);
-    personaje->setPos(69,157);
+    personaje->setPos(69,163);
 }
 
-
+void keyPressEvent(QKeyEvent *evento)
+{
+    if(evento->key() == Qt::Key_W){}
+}
 
 MainWindow::~MainWindow()
 {

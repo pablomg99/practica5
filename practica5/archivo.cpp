@@ -1,6 +1,4 @@
 #include "archivo.h"
-#include <fstream>
-using namespace std;
 
 Archivo::Archivo()
 {
@@ -38,7 +36,7 @@ void Archivo::getDatos() //Carga los datos del archivo de barreras en un arreglo
     myFile.open("Barreras.txt", ios_base::in | ios_base::ate);
 
     if(myFile.is_open()){
-        fallaLectura=true;
+        fallaLectura=false;
         leng=myFile.tellg();
         texto=new char[leng];
 
@@ -46,6 +44,8 @@ void Archivo::getDatos() //Carga los datos del archivo de barreras en un arreglo
         myFile.read(texto, leng);
         myFile.close();
     }
+    else fallaLectura=true;
+
     for(int i=0; i<leng; i++){
         datosCrudos=datosCrudos + *(texto+i);
     }
@@ -53,17 +53,24 @@ void Archivo::getDatos() //Carga los datos del archivo de barreras en un arreglo
 
 void Archivo::setList() //Convierte los datos almacenados en una cadena de caracteres en una lista de datos individuales
 {
+    getDatos();
+
     QList<QString> auxList = datosCrudos.split('\n', Qt::SkipEmptyParts);
     QList<QString> auxStrList;
     int i=0;
-    QList<QString>::iterator it;
+    QList<QString>::iterator it1, it2;
 
-    for(it=auxList.begin(); it<auxList.end(); it++)
+    for(it1=auxList.begin(); it1<auxList.end(); it1++)
     {
-        auxStrList = (*it).split(',', Qt::SkipEmptyParts);
-        datos[i][0]=str2int(auxStrList[0]);
-        datos[i][1]=str2int(auxStrList[1]);
-        datos[i][2]=str2int(auxStrList[2]);
-        datos[i][3]=str2int(auxStrList[3]);
+        auxStrList = (*it1).split(',', Qt::SkipEmptyParts);
+        it2=auxStrList.begin();
+        QList<int> h;
+        datos.push_back(h);
+        datos[i].push_back(str2int(*it2));
+        datos[i].push_back(str2int(*(it2+1)));
+        datos[i].push_back(str2int(*(it2+2)));
+        datos[i].push_back(str2int(*(it2+3)));
+        i++;
     }
+    datos[49][3]=8;
 }
