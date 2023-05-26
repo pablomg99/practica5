@@ -34,5 +34,8 @@ private:
     Archivo Cdatos;
     QList<pared*> Paredes;
     pacman *personaje;
+
+    void keyPressEvent(QKeyEvent *evento);
+    bool evaluarColision();
 };
 #endif // MAINWINDOW_H

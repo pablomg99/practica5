@@ -31,16 +31,62 @@ MainWindow::MainWindow(QWidget *parent)
 
     personaje=new pacman();
     scene->addItem(personaje);
-    personaje->setPos(69,163);
+    personaje->setPos(personaje->posx,personaje->posy);
 }
 
-void keyPressEvent(QKeyEvent *evento)
-{
-    if(evento->key() == Qt::Key_W){}
-}
+
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *evento)
+{
+    if(evento->key() == Qt::Key_W){
+        if(!evaluarColision()){
+            personaje->moveUp();
+        }
+        else{
+            personaje->moveDown();
+        }
+    }
+    else if(evento->key() == Qt::Key_S){
+        if(!evaluarColision()){
+            personaje->moveDown();
+        }
+        else{
+            personaje->moveUp();
+        }
+    }
+    else if(evento->key() == Qt::Key_A){
+        if(!evaluarColision()){
+            personaje->moveLeft();
+        }
+        else{
+            personaje->moveRight();
+        }
+    }
+    else if(evento->key() == Qt::Key_D){
+        if(!evaluarColision()){
+            personaje->moveRight();
+        }
+        else{
+            personaje->moveLeft();
+        }
+    }
+}
+
+bool MainWindow::evaluarColision()
+{
+    QList<pared*>::Iterator iterator;
+    for(iterator= Paredes.begin(); iterator!=Paredes.end(); iterator++)
+    {
+        if((*iterator)->collidesWithItem(personaje))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 

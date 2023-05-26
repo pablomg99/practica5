@@ -16,6 +16,7 @@ public:
     QTimer *timer;
     QPixmap *pixmap;
     float filas, columnas, ancho, alto, pixCol, pixFila;
+    int posx, posy, velocidad;
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
     void moveUp();
